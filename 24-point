@@ -1,0 +1,79 @@
+#include<stdio.h>
+
+float cal(float x,float y,int op)
+{   switch(op)
+{    case 1:return x+y;
+     case 2:return x-y;
+	 case 3:return x*y;
+	 case 4:return x/y;
+	 default:return 0.0;
+}
+}
+float cal_one(float a,float b,float c,float d,int op1,int op2,int op3)
+{    float r1,r2,r3;
+     r1=cal(a,b,op1);
+	 r2=cal(r1,c,op2);
+	 r3=cal(r2,d,op3);
+     return r3;
+}
+
+float cal_two(float a,float b,float c,float d,int op1,int op2,int op3)
+{    float r1,r2,r3;
+     r1=cal(a,b,op1);
+	 r2=cal(r1,d,op2);
+	 r3=cal(r2,r1,op3);
+	 return r3;
+}
+
+float cal_three(float a,float b,float c,float d,int op1,int op2,int op3)
+{    float r1,r2,r3;
+     r1=cal(c,b,op1);
+	 r2=cal(r1,a,op2);
+	 r3=cal(r2,d,op3);
+	 return r3;
+}
+float cal_four(float a,float b,float c,float d,int op1,int op2,int op3)
+{    float r1,r2,r3;
+     r1=cal(c,b,op1);
+	 r2=cal(r1,d,op2);
+	 r3=cal(r2,a,op3);
+	 return r3;
+}
+float cal_five(float a,float b,float c,float d,int op1,int op2,int op3)
+{    float r1,r2,r3;
+     r1=cal(c,d,op1);
+	 r2=cal(r1,b,op2);
+	 r3=cal(r2,a,op3);
+	 return r3;
+}
+int main(void)
+{  char op[5]={'#','+','-','*','/'};
+     int p1,p2,p3,p4;  int rr=0;
+	 scanf("%d %d %d %d",&p1,&p2,&p3,&p4);
+  for(int op1=1;op1<=4;op1++)
+	  for(int op2=1;op2<=4;op2++)
+		  for(int op3=1;op3<=4;op3++)
+		  {  if ( (cal_one(p1,p2,p3,p4,op1,op2,op3) )== 24)
+		             { printf("((%d%c)%d%c)%d%c%d=24\n",p1,op[op1],p2,op[op2],p3,op[op3],p4);  rr=1;   }
+		     if ( (cal_two(p1,p2,p3,p4,op1,op2,op3) )== 24)
+		             { printf("(%d%c%d)%c(%d%c%d)=24\n",p1,op[op1],p2,op[op2],p3,op[op3],p4);  rr=1;   }
+
+			 if ( (cal_three(p1,p2,p3,p4,op1,op2,op3) )== 24)
+		             { printf("(%d%c%(d%c%d))%c%d=24\n",p1,op[op1],p2,op[op2],p3,op[op3],p4);  rr=1;   }
+
+			 if ( (cal_four(p1,p2,p3,p4,op1,op2,op3) )== 24)
+		             { printf("(%d%c(%d%c%d))%c%d=24\n",p1,op[op1],p2,op[op2],p3,op[op3],p4);  rr=1;   }
+			 if ( (cal_five(p1,p2,p3,p4,op1,op2,op3) )== 24)
+		             { printf("%d%c(%d%c(%d%c%d))=24\n",p1,op[op1],p2,op[op2],p3,op[op3],p4);  rr=1;   }
+ }
+		 if(rr!=1)
+		 { printf("no way");  }
+
+
+
+
+
+
+
+
+}
