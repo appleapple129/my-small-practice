@@ -1,0 +1,416 @@
+样式通常存储在样式表中
+
+CSS的主要好处在于，它允许你将样式与页面内容进行分离。
+
+在web文档中直接插入一个CSS是内联样式的使用方法之一。使用内联样式，将CSS应用于单个元素。
+<p style="color:white; background-color:gray;">
+    This is an example of inline styling. 
+</p>
+
+内部样式表
+在HTML页面的标题部分将内部样式定义在<style>元素中
+<head>
+      <style>
+      p {color:white;background-color:gray; }
+      </style>
+   </head>
+
+
+外部引用CSS
+通过这种方法将所有的CSS样式保存在同一个后缀名为.css的拓展文件中。
+然后通过html标签<link>在HTML页面的<head>部分将CSS文件引入。
+<head>
+   <link rel="stylesheet" href="example.css">
+</head>
+
+CSS语法
+选择器{属性，值；}
+
+CSS注释
+/* This is a comment */
+
+
+通过样式的三个主要来源形成一个级联：
+由页面的作者创建的CSS样式
+浏览器的默认CSS样式
+
+继承是指属性在页面中流动的方式。 除非另有定义，子元素通常会采用父元素的特征。
+<style>
+   body {color: green; }
+   .mydiv {color: red; }
+</style>
+<body>
+   <div class="mydiv">
+      <p>加油！干得不错</p>
+   </div>
+</body>
+浏览页面的用户自定义CSS样式
+
+
+元素选择器：就是对已选中的HTML元素符号设置CSS样式（例如：div、p、a、ul、li等元素符号）。
+div{
+    width:80px;
+    height:90px;
+}
+
+class选择器（类型选择器）：是最常见和易于理解的。该选择器通过绑定HTML元素上已设置的class标签进行设置对应的CSS样式。
+以 .（class选择符前缀）加上对应的class名称组合成选择器的元素符号。  （基本）
+.w3cschool{
+    width:80px;
+    height:90px;
+}
+
+<div class="w3cschool">简直绿的发光</div>
+
+id选择器：该选择器通过绑定HTML元素上已设置的唯一id标签进行设置对应的CSS样式。 （基本）
+以#（id选择符前缀）加上对应的id名称组合成选择器的元素符号。
+ 因为HTML页面中id标签的唯一性（不允许同时存在两个相同的id），所以id选择器的复用性相对较低，因此较为建议使用class选择器
+
+后代选择器设置的CSS样式不会影响到父级。
+父级和子级之间需要用空格隔开。
+后代选择器可以存在多层级父级，并不局限在单一父子级之间，层级越深所设置的CSS样式优先级越高。
+.family .mother .baby{
+    color:blue;
+}
+
+
+
+子元素选择器： 子元素选择器与后代选择器较为类似。相对于后代选择器，子元素选择器所涉及的范围会更小。
+后代选择器可以跨层级影响，而子元素选择器要求父元素和子元素一定为上下级关系，中间如果隔着其他元素则会失效。
+父元素和子元素之间需要用 > (子结合符) 隔开。
+
+
+相邻选择器： 选中对应元素的下一个兄弟元素。
+所涉及的相邻兄弟元素必须是该元素的同级元素。
+所涉及的相邻兄弟元素必须是相邻兄弟元素，中间若有其他元素隔开也将导致失效。
+元素A和对应的相邻兄弟元素之间需要用 +  隔开。
+#w3cschool+div{
+    width:80px;
+    height:90px;
+}
+
+
+属性选择器： 检索HTML页面中符合所设置的属性条件的元素。
+属性选择器通过[ ]设置被选元素的属性条件。如下图所示，将选择HTML页面中所有包含了alt属性的img元素并为其设置CSS样式。
+div[id]{
+    color:red;
+}
+
+选择器分组：当需要多个元素同时使用同一套CSS样式时，可以使用选择器分组，这样可以避免为每个元素单独设置样式而照成不必要的冗余。
+/***选择器分组写法***/  （基本）
+
+a,p,div{
+    color:red;
+}
+
+/***原始写法***/
+a{color:red}
+p{color:red}
+div{color:red}
+
+-------------------------------------------------------------------------------------------------------
+font-family属性指定元素的字体。
+有两种字体系列名称： 
+
+字体系列：特定的字体系列（如Times New Roman或Arial）
+通用族：一组具有相似外观的字体族（如Serif或Monospace）<p class="serif">
+   This is a paragraph shown in serif font.
+</p>
+
+font-family属性应该包含几个字体名称作为备选。 在CSS样式中指定Web字体时，请添加多个字体名称，以避免意外的行为。 如果客户端计算机出于某种原因没有您选择的字体时，则会尝试下一个字体。
+body {
+   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}(多个单词需用引号)
+
+<head>
+    
+<style>
+        p.serif {
+           font-family: "Times New Roman", Times, serif;
+        }   </style>
+
+</head>
+
+<body>
+    <p class="serif">
+       This is a paragraph shown in serif font.
+    </p>  
+    </body>
+ 
+
+font-size属性 
+font-size属性用于设置字体的大小。 设置网页字体大小的其中之一方法是使用关键字。 例如xx-small, small, medium, large, larger, etc等。
+
+
+您还可以使用像素(px)或相对尺寸单位(em)数值来操纵字体大小。
+ <style>
+        p.small {
+            font-size: small;
+        }     </style>
+<body>
+    <p class="small">
+       设置为small
+    </p>    </body>
+
+
+font-style属性通常用于指定斜体文本。
+font-style属性有三个值：normal(正常)，italic和oblique。 
+ HTML <i>标签将产生与斜体字体完全相同的结果。
+
+<head>
+    <style>
+  p.normal {
+           font-style: normal;
+        }
+  </style> </head>
+<p class="normal">我没有效果。</p>
+
+font-weight控制文本的粗细。 值可以设置为normal (默认)，bold，bolder，和lighter。
+ HTML <strong>标签也使文本变粗。
+p.light {
+   font-weight: lighter;
+}
+<p class="light">This is a font with a "lighter" weight.</p>
+也可以使用从100（细）到900（粗）的数字来定义字体粗细。
+
+font-variant属性允许您将字体转换为所有小型大写字母。 值可以设置为normal，small-caps，和 inherit。
+<p class="normal">Paragraph font variant set to normal.</p>
+p.normal {
+   font-variant: normal;
+}
+
+color属性用于指定文本的颜色。
+指定文本颜色的其中一种方法是使用颜色名称：如red, green, blue等
+
+
+<h1>w3cschool</h1>
+<p class="example">w3cschool</p>
+h1 {
+   color: #0000FF;
+}
+p.example {
+   color: rgb(255,0,0);
+}
+---------------------------------------------------------------------------------------------------
+
+text-align属性指定元素中文本的水平对齐方式。 默认情况下，您网站上的文字左对齐。 但是，有时您可能需要不同的对齐方式。
+文本对齐属性值如下：left，right，center和justify。
+
+vertical-align属性设置元素的垂直对齐。 常用的值是top，middle和bottom。 
+td.top {
+   vertical-align: top;
+}
+  <td class="top">Top</td>
+
+text-decoration属性用于指定文本将如何装饰。
+none - 默认值，这定义了一个正常的文本
+inherit - 从其父元素继承此属性
+overline - 在文本上方绘制水平线
+underline - 在文本下方绘制水平线
+line-through - 在文本中绘制水平线（替换HTML <s>标记）
+
+缩进
+text-indent属性指定在文本的第一行开始之前应该留下多少水平空间。 属性值是长度(px，pt，cm，em等)，%和inherit。
+p {
+   text-indent: 60px;  （负值则为向左缩进）
+}
+
+
+text-shadow为文本添加阴影。 
+它有四个值：
+第一个值：定义阴影在x（水平）方向的距离
+第二个值：定义y（垂直）方向的距离
+第三个值：定义阴影的模糊
+第四个值：设置颜色
+ text-shadow: 5px 2px 4px grey;
+
+text-transform可以实现文本的首字母大写效果。
+p.capitalize {
+   text-transform: capitalize;
+}
+<p class="capitalize">This value transforms all characters to lowercase.</p>
+
+
+
+letter-spacing属性用于设置文本中字符之间的间距。 
+值可以设置为：
+normal 定义了默认样式，字符之间没有额外的空间;
+length 长度计量单位，用px，pt，cm，mm等测量单位定义字符之间的额外空间;
+inherit 继承其父元素的属性;
+
+
+word-spacing 属性指定文本中单词之间的空格。 就像letter-spacing属性一样，可以将word-spacing 的值设置为normal，length和inherit。
+p.px { 
+   word-spacing: 30px;
+}
+<p class="px">This paragraph is word-spaced at 30px.</p>
+要使用word-spacing设置单词之间的间距，可以使用像px，pt，pc，cm，mm，inches，em和ex这样的测量值。
+
+white-space可以设置元素内的换行符。
+参数可以是normal，inherit，nowrap等。(nowrap会屏蔽该元素中的所有换行符。)
+white-space也支持其他值：
+pre ：文本支持所有的换行和空格
+pre-line ：文本支持换行，忽略额外的空格
+pre-wrap ：文本将在必要的时候或者行的结尾进行换行
+
+<p class="pre">   （空格有 ，换行也有，输出结果和下面一样）
+In the markup we have multiple            spaces 
+and a line break. 
+</p>
+
+-----------------------------CSS属性-盒模型 ---------------------------------------------------------------
+所有的HTML元素都可以被认为是盒子。CSS盒模型代表网站的设计和布局。 它由边距(margin)，边框(border)，填充(padding)和实际内容组成。
+属性以相同的顺序工作：顶部(top)，右侧(right)，底部(bottom)和左侧(left)。
+
+网页的每个元素都是一个盒子。 
+CSS通过盒模型来确定一个元素的大小以及如何放置它们。
+
+
+CSS的border属性允许您自定义HTML元素的边框。 
+p {
+   padding: 10px;    
+   border: 5px solid green;
+}
+
+border宽度
+border的属性可以单独设置。 border-width属性指定边框的宽度。
+
+border-style的默认值是none，它没有定义边界。 
+边框样式属性支持各种样式：虚线(dotted)，虚线(dashed)，双精度(double)等。下面的例子说明了它们之间的区别。
+ 在CSS中，可以使用以下属性为不同的边指定不同的边框：border-top-style，border-right-style，border-bottom-style 和 border-left-style。
+
+将一个<div>元素的总宽度和高度设置为100px：
+ 这里注意不要和盒模型的总宽度和高度弄混了哦~
+
+
+元素的宽度和高度也可以使用百分比来分配。
+在下面的例子中，元素的宽度以百分比分配，高度以像素为单位。
+
+要设置元素的最小和最大高度或者宽度，可以使用以下属性：
+min-width - 元素的最小宽度
+min-height - 元素的最小高度
+max-width - 元素的最大宽度
+max-height - 元素的最大高度
+在下面的例子中，我们将不同段落的最小高度和最大宽度设置为100px。
+
+p.first {
+   border: 5px solid green;    
+   min-height: 100px;       
+}
+p.second {
+   border: 5px solid green;    
+   max-width: 100px;       
+}
+
+填写空格，创建一个顶部10像素，底部15像素，右侧5像素，左侧10像素的padding
+padding: px px px 10px;
+
+上右下左
+
+
+background-color属性用于指定元素的背景颜色。
+body {
+    background-color: #87CEFA;
+}
+
+background-color可以使用三种不同的格式的参数来定义：
+
+颜色名称关键词：red、blue等；
+十六进制值：#fff、#000、#6e6e6e等；
+RGB：rgb(255,255,255)、rgba(0,0,0,0.5)等（使用rgba可以实现透明背景色）；
+
+background-image属性在元素中设置一个或多个背景图像。 我们来为body元素设置一个背景图片。
+body {
+   background-image: url("https://statics.w3cschool.cn/images/w3c/header-logo.png");
+   background-color: #e9e9e9;
+}
+
+background-image不仅可以设置整个页面，而且可以设置个别元素。
+下面我们为<p>元素设置一个背景图片。
+HTML代码：
+
+p {
+   padding: 30px;
+   background-image: url("https://statics.w3cschool.cn/images/w3c/header-logo.png");
+   color: black;   
+}
+
+background-repeat属性指定如何重复背景图像。 背景图像可以沿水平轴，垂直轴，两个轴重复，或者根本不重复。
+repeat-x只会水平重复背景图像。
+repeat-y只会垂直重复背景图像。
+ 如果你的背景图片只想使用一次，请使用no-repeat
+body {
+   background-image: url("css_logo.png");
+   background-repeat: repeat-y;
+}
+
+background-attachment属性设置背景图像是固定的还是与页面的其余部分一起滚动。
+background-attachment属性的参数：
+scroll：默认值。背景图像会随着页面其余部分的滚动而移动。
+fixed：当页面的其余部分滚动时，背景图像不会移动。
+inherit：规定应该从父元素继承 background-attachment 属性的设置。
+-------------------------------CSS 列表样式------------------------------------------------------------
+使用CSS，列表可以进一步风格化，图像可以用作列表项标记。 
+其中一种方法是使用list-style-type属性，可以设置为none,circle, square, decimal, disc, lower-alpha等。
+
+每一列前面加上图标
+list-style-image ： 指定要用作列表项标记的图像。
+list-style-position ： 指定标记框的位置（属性值包括：inside, outside）。
+ul {
+   list-style-image: url("https://www.w3cschool.cn/statics/images/favicon.ico");
+   list-style-position: inside;
+}
+
+list-style属性是设置list-style-type，list-style-image和list-style-position的简写属性。 它用于在一个声明中设置所有的列表属性：
+
+
+表格table
+border-collapse属性指定表格边框是否折叠为单个边框或默认分开。 如果边框是分开的，则可以使用border-spacing属性来更改间距。
+table {
+   border-collapse: separate;
+   border-spacing: 20px 40px;
+}
+
+caption-side属性指定表标题的位置。 值可以设置为 top 或 bottom。
+在下面的例子中，我们指定顶部表格标题的位置。
+caption {
+   caption-side: top;
+}
+empty-cells属性指定是否在表格中的空单元格上显示边框和背景。 
+参数值可以是： 
+
+show：呈现空单元格的边框
+hide ：隐藏空单元格的边框
+
+table-layout指定如何计算表格列的宽度。 
+参数值可以是： 
+
+auto  ： 当列或单元格宽度未明确设置时，列宽将与组成列的单元格中的内容量成比例。
+fixed ： 当列或单元格宽度未明确设置时，列宽将不受组成列的单元格中的内容数量的影响。
+
+链接可以使用任何CSS属性（例如，color，font-family，background等）来设置样式。
+另外，链接的样式可以不同，具体取决于所处的状态。以下伪选择器可用： 
+a:link - 定义正常的未访问链接的样式
+a:visited - 定义访问链接的样式
+a:active - 一旦你点击链接，链接就会激活
+a:hover - 当鼠标悬停时，链接悬停
+ 当为链接设置样式时，必须遵循以下规则：
+- a:hover 必须在a:link和a:visited之后
+- a:active 必须在a:hover之后
+
+处理带链接的文本CSS最常见的用法之一是删除下划线。 在下面的示例中，text-decoration属性用于删除下划线。
+a:link {
+   text-decoration: none;
+}
+
+
+设置鼠标光标样式cursor
+cursor属性还有许多其他的值，例如： 
+default    - 默认光标 
+crosshair - 光标显示为十字准线 
+pointer    - 光标显示手形图标 
+cursor的值较多，以下用图片的形式列出。
+
+ <p style="cursor:auto;">来用你的小手紧握鼠标~跟我一起向下拖动</p>
+
+

@@ -1,0 +1,224 @@
+<br /> 标签定义折行（换行）
+如果你希望在不产生一个新段落的情况下进行折行（换行），请使用 <br> 标签。 
+<br> 标签是一个空标签，意味着它没有结束标签
+
+HTML 属性总是以名称/值对
+
+name='Bill "HelloWorld" Gates'
+双引号是最常用的，不过使用单引号也没有问题。
+在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号，例如：
+
+<hr /> 是一个空元素，这里的“hr”是“水平线（horizontal rule）”的意思。
+
+<!-- 这是一个注释 --> 
+
+
+<p> 
+浏览器会自动地在段落的前后添加空行。
+
+ <p><b>定义粗体文本</b></p>
+ <p><em>定义着重文字</em></p>
+ <p><i>定义斜体字</i></p>
+ <p><small>定义小号字</small></p>
+ <p><strong>定义重要的文本</strong></p>
+ <p>定义<sub>下标字</sub></p>
+ <p>定义<sup>上标字</sup></p>
+ <p><ins>定义插入字</ins></p>
+ <p><del>定义删除字</del></p>
+
+HTML 使用 <a> 标签来设置超文本链接。 href属性
+<a href="url">链接文本</a>
+
+
+<a href="https://www.w3cschool.cn" target="_blank">访问w3cschool</a>
+target 属性值有：
+_blank：在新窗口中打开被链接文档。
+_self：默认。在相同的框架中打开被链接文档。
+_parent：在父框架集中打开被链接文档。
+_top：在整个窗口中打开被链接文档。
+framename：在指定的框架中打开被链接文档。
+
+HTML 负责网页的具体内容（结构） 
+CSS 则修饰网页的表现形式（布局） 
+
+CSS 可以通过以下方式添加到HTML中：
+内联样式：在HTML元素中使用“style”属性。
+内部样式表：在HTML文档头部 <head> 区域使用 <style> 元素来包含 CSS。
+外部引用：使用外部CSS文件。
+最好的方式是通过外部引用CSS文件。
+
+
+<h1 style="text-align:center;">居中对齐的标题</h1>
+
+<style type="text/css">
+body {background-color:yellow;}
+p {color:red;}
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="/statics/demosource/styles.css"> 
+
+<img> 是空标签，它只包含属性，并且没有闭合标签。 
+URL 指存储图像的位置，你需要为位于引号之间的 src 属性放置图像位置。
+<img src="url">
+
+<img src="https://www.w3cschool.cn/statics/images/w3c/index-logo.png" alt="随时随地学编程" width="228" height="60">
+
+
+<ul>
+  <li>苹果</li>
+  <li>香蕉</li>
+  <li>菠萝</li>
+</ul> 
+
+
+<ol>
+  <li>苹果</li>
+  <li>香蕉</li>
+  <li>菠萝</li>
+</ol> 
+
+内联元素在显示时通常不会以新行开始。 
+例如：<span>, <a>, <img>, <b>, <td> 元素。
+
+<div> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行（换行）。
+如果与 CSS 一同使用，<div> 元素可用于对大的内容块设置样式属性。 
+
+<span> 元素是内联元素，可用作文本的容器。
+<span> 元素也没有特定的含义。
+当与 CSS 一同使用时，<span> 元素可用于为部分文本设置样式属性。
+<p>我的哥哥有 <span style="color:0000FF;font-weight:bold">蓝色</span> 的球鞋，我的姐姐有 <span style="color:FF0000;font-weight:bold">红色</span> 的球鞋。</p>
+
+<iframe> 标签规定一个内联框架。 
+一个内联框架被用来在当前 HTML 文档中嵌入另一个文档。 
+height 和 width 属性用来定义 <iframe> 标签的高度与宽度。 
+属性默认以 px（像素）为单位，但是你可以指定其按比例显示 (如："90%")。
+<iframe src="/statics/demosourse/demo_iframe.htm" width="90%" height="300"></iframe>
+<iframe src="/statics/demosourse/demo_iframe.htm" width="300" height="300" frameborder="0">
+frameborder=0 无边框 =1 有边框
+
+颜色十六进制(Color HEX)
+
+<script> 标签用于定义客户端脚本，比如 JavaScript。
+<script> 元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件。
+JavaScript 最常用于图片操作、表单验证以及内容动态更新。
+只有在浏览器不支持脚本或者禁用脚本时，才会显示 <noscript> 元素中的内容。
+<script>
+document.write("Hello W3Cschool!")
+</script>
+<noscript>抱歉，您的浏览器不支持 JavaScript!</noscript>
+
+在 HTML 中不能使用小于号（<）和大于号（>）等预留，这是因为浏览器会误认为它们是标签。
+比如说显示小于号，我们必须这样写：&lt; 或 &#60。 
+
+HTML 表格标签
+一个 HTML 表格包括 <table> 元素，一个或多个 <tr>、<th> 以及 <td> 元素。 
+<tr> 元素定义表格行，<th> 元素定义表头，<td> 元素定义表格单元。 
+
+<table border="1">   border 属性值为 "1" 显示表格的边框是 1 像素宽。
+
+HTML 表格的表头使用 <th> 标签进行定义。 
+大多数浏览器会把表头显示为粗体居中的文本。
+
+rowspan 属性定义单元格应该横跨的行数，如 rowspan=2，表示横跨两行。 
+colspan 属性定义单元格应该横跨的列数，如 colspan=4，表示横跨四列。
+
+HTML <form> 标签
+表单元素是允许用户在表单中输入内容，比如：文本域(textarea)、下拉列表、单选框、复选框等等。 
+HTML 表单用于收集不同类型的用户输入。
+
+HTML <form> action 属性 
+action 属性规定当提交表单时，向何处发送表单数据。 
+
+HTML <form> method 属性 
+method 属性方法规定如何发送表单数据（表单数据会被发送到在 action 属性中规定的页面中）。 
+method 属性值有：get（默认）或 post。 
+
+关于 get 和 post 的区别： 
+get：以查询字符串形式提交，在地址栏中能看到，长度有限制，不安全。
+post：以表单数据组形式提交，在地址栏中看不到，长度无限制，安全。
+
+
+HTML <form> enctype 属性
+enctype 属性规定在将表单数据发送到服务器之前如何对其进行编码。
+注意：只有 method="post" 时才使用 enctype 属性。
+
+多数情况下被用到的表单标签是输入标签（<input>）。 
+输入类型是由类型属性（type）定义的。
+
+<form>
+  Username: <input type="text" name="username">
+</form>
+
+密码字段 
+密码字段通过标签 <input type="password"> 来定义。
+
+<form>
+  <input type="radio" name="sex" value="male">Male<br>
+  <input type="radio" name="sex" value="female">Female
+</form>
+
+  Username: <input type="text" name="username">
+  <input type="submit" value="Submit">
+
+下拉
+<select>
+
+  <option value="apple">Apple</option>
+
+  <option value="banana">Banana</option>
+
+  <option value="orange">Orange</option>
+
+</select>
+
+
+
+<textarea> 标签定义文本域（一个多行的输入控件）。
+<textarea rows="10" cols="40">
+  我是一个文本域。 
+</textarea>
+
+<label> 标签定义了 <input> 元素的标签，一般为输入标题。
+<label> 标签的 for 属性应当与相关元素的 id 属性相同。
+<form action="/statics/demosource/demo-form.php">
+
+ <label for="male">Male</label>
+ 
+ <input type="radio" name="sex" id="male" value="male">
+<br>
+  <label for="female">Female</label>
+  
+<input type="radio" name="sex" id="female" value="female"><br><br>
+
+  <input type="submit" value="提交">
+</form>
+
+<button> 标签定义一个按钮。
+在 <button> 元素内部，您可以放置内容，比如文本或图像。这是该元素与使用 <input> 元素创建的按钮之间的不同之处。
+
+<button> type 属性值有：
+
+submit：该按钮是提交按钮（除了 IE 浏览器，该值是其他浏览器的默认值）。
+button：该按钮是可点击的按钮（IE 浏览器的默认值）。
+reset：该按钮是重置按钮（清除表单数据）。
+
+
+<fieldset> 标签定义了一组相关的表单元素，并使用外框包含起来。
+<legend> 标签定义了 <fieldset> 元素的标题。
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+

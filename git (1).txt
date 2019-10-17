@@ -1,0 +1,128 @@
+添加到暂存区 ( git add )
+git add <文件/文件夹>
+
+$ git status -s
+"AM" 状态的意思是，这个文件在我们将它添加到缓存之后又有改动。改动后我们在执行 git add 命令将其添加到缓存中(暂存区)：
+
+添加到暂存区 ( git add )
+git add . ：他会监控工作区的状态树，使用它会把工作时的所有变化提交到暂存区，包括文件内容修改(modified)以及新文件(new)，但不包括被删除的文件。
+git add -u ：他仅监控已经被add的文件（即tracked file），他会将被修改的文件提交到暂存区。add -u 不会提交新文件（untracked file）。（git add --update的缩写）
+git add -A ：是上面两个功能的合集, 也就是说包括删除的文件也会被提交（git add --all的缩写）
+
+git diff 有两个主要的应用场景。
+尚未缓存的改动：git diff
+查看已缓存的改动： git diff --cached
+查看已缓存的与未缓存的所有改动：git diff HEAD
+显示摘要而非整个 diff：git diff --stat
+
+向仓库提交代码 ( git commit )
+
+如果你觉得 git add 提交缓存的流程太过繁琐，Git 也允许你用 -a 选项跳过这一步。命令格式如下：
+git commit -a
+
+取消已缓存的内容 ( git reset HEAD )
+HEAD指向的版本就是当前版本 
+git reset HEAD 命令用于取消已缓存的内容。
+
+$ git reset HEAD -- 指定文件名
+
+删除文件 ( git rm )
+git rm 从版本库中删除文件
+
+如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 -f
+git rm -f <file>
+
+如果把文件从暂存区域移除，但仍然希望保留在当前工作目录中，换句话说，仅是从跟踪清单中删除，使用 --cached 选项即可
+git rm --cached <file>
+
+确实删除
+$ git rm <file>
+$ git commit -m "单行注释"
+恢复
+$ git checkout -- <file>
+
+删除文件 ( git rm )
+当我们需要删除暂存区或分支上的文件, 但本地又需要使用, 只是不希望这个文件被版本控制, 可以使用:
+$ git rm --cached README 
+
+我们可以使用 -r 参数进行递归删除, 即如果后面跟的是一个目录做为参数，则会递归删除整个目录中的所有子目录和文件：
+
+移动/重命名 ( git mv )
+git mv 命令用于移动或重命名一个文件、目录、软连接。
+
+git remote add origin https://github.com/lucoo01/gitlearn.git
+注意: 以上的 lucoo01 为 GitHub 账户名, 要替换成自己的
+
+git push -u origin master
+Username for 'https://github.com': 425389019@qq.com
+Password for 'https://425389019@qq.com@github.com': 
+由于远程库是空的，我们第一次推送master分支时，加上了-u参数
+
+git push -u origin master 如果当前分支与多个主机存在追踪关系, 
+使用 -u 参数指定一个默认主机，这样后面就可以不加任何参数使用 git push
+
+更新数据 ( git fetch )
+git fetch：从远程获取最新版本到本地，不会自动 合并
+
+上述 git pull 命令,  相当于 git fetch 和 git merge
+
+
+创建分支命令：git branch 分支名
+切换分支命令:git checkout 分支名
+合并分支命令:git merge 
+
+使用 git checkout -b 分支名 命令来创建新分支并立即切换到该分支下，从而在该分支中操作。
+
+删除分支 (git branch -d name)
+git branch -d name
+
+Git 鼓励大量使用分支：  
+    查看分支：git branch  
+    创建分支：git branch <name>  
+    切换分支：git checkout <name>  
+    创建+切换分支：git checkout -b <name>  
+    合并某分支到当前分支：git merge <name>  
+    删除分支：git branch -d <name>
+
+
+比如, 在两个分支中修改了同一个文件的同一行代码,在合并的时候就会发生冲突.
+
+通常 Git 在合并分支的时候会用 Fast forward 模式, 这样删除分支后, 也会丢掉分支信息.
+我们在合并分支时可以使用 --no-ff 参数,强制禁用 Fastforward 模式, 这样 Git 在合并时会生成一个新的 commit(提交), 然后我们就可以在历史分支上看出分支信息.
+
+首先，master 分支应该是非常稳定的，也就是仅用来发布新版本，平时不要直接在上面开发；
+你可以和你团队成员在 dev 上开发, 每个人都有自己的分支, 然后时不时往 dev 分支上合并, 也就是说 dev 分支时不稳定的, 等到要发布版本的时候, 再将 dev 往 master 上合并就可以了, 图示如下:
+
+git remote 查看分支状况
+
+我们想将本地分支推送到远程库,可以使用 git push 命令,在推送时,要指定本地分支, 这样，Git 就会把该分支推送到远程库对应的远程分支上：
+如果要推送其他分支, 比如 dev2 :
+$ git push origin dev2
+
+命令git checkout -- 文件意思就是，把 该文件 在工作区的修改全部撤销 
+总之，就是让这个文件回到最近一次git commit或git add时的状态。 
+
+历史记录 ( git log )
+如果嫌 git log 输出信息太多，看得眼花缭乱，可以加上--pretty=oneline参数: 
+
+版本回退 ( git reset )
+要把当前版本回退到上一个版本，可以使用git reset命令. 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
